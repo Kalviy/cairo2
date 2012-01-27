@@ -1,0 +1,3 @@
+01_no-private-symbol-export.patch
+02_iceweasel-buggy-repeat.patch
+99_ltmain_as-needed.patch

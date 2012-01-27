@@ -1,0 +1,31 @@
+Index: cairo/src/cairo-xlib-display.c
+===================================================================
+--- cairo.orig/src/cairo-xlib-display.c	2010-08-17 05:52:51.868996101 +0200
++++ cairo/src/cairo-xlib-display.c	2010-08-17 05:52:54.692995371 +0200
+@@ -66,6 +66,8 @@
+ 
+ static cairo_xlib_display_t *_cairo_xlib_display_list;
+ 
++static int buggy_repeat_force = -1;
++
+ static void
+ _cairo_xlib_remove_close_display_hook_internal (cairo_xlib_display_t *display,
+ 						cairo_xlib_hook_t *hook);
+@@ -338,6 +340,17 @@
+ 	    display->buggy_repeat = TRUE;
+     }
+ 
++    /* XXX workaround; see https://bugzilla.mozilla.org/show_bug.cgi?id=413583 */
++    if (buggy_repeat_force == -1) {
++        if (getenv("MOZ_CAIRO_BUGGY_REPEAT"))
++            buggy_repeat_force = 1;
++        else
++            buggy_repeat_force = 0;
++    }
++
++    if (buggy_repeat_force)
++        display->buggy_repeat = TRUE;
++
+     display->next = _cairo_xlib_display_list;
+     _cairo_xlib_display_list = display;
+ 

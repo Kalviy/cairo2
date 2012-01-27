@@ -1,0 +1,1 @@
+debian/install/udeb/usr/lib/libcairo.so.* /usr/lib

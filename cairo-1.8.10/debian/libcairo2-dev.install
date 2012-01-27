@@ -1,0 +1,5 @@
+debian/install/main/usr/include/cairo/*.h /usr/include/cairo
+debian/install/main/usr/lib/libcairo.so /usr/lib
+debian/install/main/usr/lib/libcairo*.a /usr/lib
+debian/install/main/usr/lib/libcairo*.la /usr/lib
+debian/install/main/usr/lib/pkgconfig/cairo*.pc /usr/lib/pkgconfig
