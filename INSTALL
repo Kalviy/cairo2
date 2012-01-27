@@ -1,0 +1,3 @@
+Just use the following:
+
+dpkg-buildpackage -rfakroot -us -uc
